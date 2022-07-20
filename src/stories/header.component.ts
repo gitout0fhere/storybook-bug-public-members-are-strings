@@ -23,12 +23,13 @@ import { User } from './User';
           </g>
         </svg>
         <h1>Acme</h1>
+        {{thisIsATest}}
+        {{test()}}
       </div>
       <div>
         <div *ngIf="user">
           <span class="welcome">
-            Welcome, <b>{{ user.name }}</b
-            >!
+            Welcome, <b>stranger</b>!
           </span>
           <storybook-button
             *ngIf="user"
@@ -47,9 +48,7 @@ import { User } from './User';
           ></storybook-button>
           <storybook-button
             *ngIf="!user"
-            primary
             size="small"
-            primary="true"
             class="margin-left"
             (onClick)="onCreateAccount.emit($event)"
             label="Sign up"
@@ -72,4 +71,11 @@ export default class HeaderComponent {
 
   @Output()
   onCreateAccount = new EventEmitter<Event>();
+
+  public thisIsATest = "1234567890";
+  public thisIsATestObject = { name: "Hola Mundo" };
+
+  public test(): string {
+    return typeof this.thisIsATestObject;
+  }
 }
